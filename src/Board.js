@@ -13,24 +13,28 @@ import './Board.css';
 class Board extends Component {
   static defaultProps = {
     nRows: 5,
-    nCols: 5
+    nCols: 5,
+    chanceLightsStartOn: 0.25
   };
 
   state = {
     hasWon: false,
-    board: 0
+    board: this.createBoard()
   };
 
-  createBoard = () => {
-    const newBoard = Array(this.props.nRows)
-      .fill(false)
-      .map(() => Array(this.props.nCols).fill(false));
-    console.log(newBoard);
-    return this.setState({
-      hasWon: false,
-      board: newBoard
-    });
-  };
+  createBoard() {
+    const board = [];
+
+    for (let i = 0; i < this.props.nRows; i++) {
+      let row = [];
+      for (let j = 0; j < this.props.nCols; j++) {
+        row.push(Math.random() < this.props.chanceLightsStartOn);
+      }
+      board.push(row);
+    }
+
+    return board;
+  }
 
   // TODO: Handle changing cells and update the board
 
@@ -41,17 +45,11 @@ class Board extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.createBoard}> rows</button>
-        <h1>{this.props.nCols} Cols</h1>
-
         {/* Game board should look like this */}
         <table>
           <tbody>
             <tr>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
+              <Cell cellState={true} />
             </tr>
           </tbody>
         </table>

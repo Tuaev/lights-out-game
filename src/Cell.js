@@ -6,7 +6,8 @@ class Cell extends Component {
   handleClick = e => {};
 
   render() {
-    return <td onClick={this.handleClick} />;
+    const cellClass = this.props.cellState === true ? 'cellOn' : 'cellOff';
+    return <td className={cellClass} onClick={this.handleClick} />;
   }
 }
 
