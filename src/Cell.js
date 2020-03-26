@@ -4,8 +4,7 @@ import './Cell.css';
 class Cell extends Component {
   // Listen to click and handle the event
   handleClick = e => {
-    console.log(e);
-    console.log('clicked', e.key);
+    this.props.flipCells();
   };
 
   render() {

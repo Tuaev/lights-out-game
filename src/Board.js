@@ -36,11 +36,27 @@ class Board extends Component {
     return board;
   }
 
-  // TODO: Handle changing cells and update the board
+  // TODO - Handle changing cells and update the board
 
   // Function to check coordinate of click cell and determine if the cell is on of off
   // Turn on/off surround cells
   // Check if user has won by determining if all cells are off
+  flipCell = coord => {
+    const { nCols, nRows } = this.props;
+    const board = this.state.board;
+    const [y, x] = coord.split('-').map(Number);
+
+    function flipCell(y, x) {
+      // if cell exists on board, flip it
+      if (x >= 0 && x < nCols && y >= 0 && y <= nRows) {
+        board[y][x] = !board[y][x];
+      }
+    }
+
+    flipCell(y, x);
+
+    this.setState({ board: board });
+  };
 
   render() {
     const tableBoard = [];
@@ -48,7 +64,13 @@ class Board extends Component {
       let row = [];
       for (let j = 0; j < this.props.nCols; j++) {
         let coord = `${i}-${j}`;
-        row.push(<Cell key={coord} cellState={this.state.board[i][j]} />);
+        row.push(
+          <Cell
+            key={coord}
+            cellState={this.state.board[i][j]}
+            flipCells={() => this.flipCell(coord)}
+          />
+        );
       }
       tableBoard.push(<tr key={i}>{row}</tr>);
     }
