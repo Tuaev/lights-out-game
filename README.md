@@ -1,6 +1,6 @@
 # React game based on the 1995 Lights Out console game.
 
-![Lights Out Game Screenshot](./screenshot/light-out-screen.jpg)
+![Lights Out Game Screenshot](src/screenshot/light-out-screen.jpg)
 
 ## Developed as part of an exercise in the Colt Steele React course
 
