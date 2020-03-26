@@ -3,10 +3,13 @@ import './Cell.css';
 
 class Cell extends Component {
   // Listen to click and handle the event
-  handleClick = e => {};
+  handleClick = e => {
+    console.log(e);
+    console.log('clicked', e.key);
+  };
 
   render() {
-    const cellClass = this.props.cellState === true ? 'cellOn' : 'cellOff';
+    const cellClass = 'Cell' + (this.props.cellState ? ' Cell-On' : '');
     return <td className={cellClass} onClick={this.handleClick} />;
   }
 }

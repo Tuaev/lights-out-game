@@ -1,7 +1,9 @@
-.cellOn {
-  background: red;
+.Cell {
+  height: 100px;
+  width: 100px;
+  background-color: black;
 }
 
-.cellOff {
-  background: black;
+.Cell-On {
+  background-color: red;
 }
