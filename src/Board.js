@@ -43,17 +43,18 @@ class Board extends Component {
   // Check if user has won by determining if all cells are off
 
   render() {
+    const tableBoard = [];
+    for (let i = 0; i < this.props.nRows; i++) {
+      let row = [];
+      for (let j = 0; j < this.props.nCols; j++) {
+        row.push(<Cell cellState={this.state.board[i][j]} />);
+      }
+      tableBoard.push(<tr>{row}</tr>);
+    }
     return (
-      <div>
-        {/* Game board should look like this */}
-        <table>
-          <tbody>
-            <tr>
-              <Cell cellState={true} />
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <table className="Board">
+        <tbody>{tableBoard}</tbody>
+      </table>
     );
   }
 }
