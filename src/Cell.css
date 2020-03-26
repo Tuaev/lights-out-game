@@ -1,9 +1,10 @@
 .Cell {
   height: 100px;
   width: 100px;
-  background-color: darkgray;
+  background-color: #263238;
+  transition: background-color 0.4s ease;
 }
 
 .Cell-On {
-  background-color: white;
+  background-color: #00bcd4;
 }
