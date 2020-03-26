@@ -48,12 +48,16 @@ class Board extends Component {
 
     function flipCell(y, x) {
       // if cell exists on board, flip it
-      if (x >= 0 && x < nCols && y >= 0 && y <= nRows) {
+      if (x >= 0 && x < nCols && y >= 0 && y < nRows) {
         board[y][x] = !board[y][x];
       }
     }
 
     flipCell(y, x);
+    flipCell(y, x - 1);
+    flipCell(y, x + 1);
+    flipCell(y - 1, x);
+    flipCell(y + 1, x);
 
     this.setState({ board: board });
   };
