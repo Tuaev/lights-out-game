@@ -36,8 +36,6 @@ class Board extends Component {
     return board;
   }
 
-  // TODO - Handle changing cells and update the board
-
   // Function to check coordinate of click cell and determine if the cell is on of off
   // Turn on/off surround cells
   // Check if user has won by determining if all cells are off
@@ -59,10 +57,16 @@ class Board extends Component {
     flipCell(y - 1, x);
     flipCell(y + 1, x);
 
-    this.setState({ board: board });
+    // Checking if every cell in every row is false.
+    const hasWon = board.every(row => row.every(cell => !cell));
+
+    this.setState({ board: board, hasWon: hasWon });
   };
 
   render() {
+    if (this.state.hasWon) {
+      return <h1>YOU WON!</h1>;
+    }
     const tableBoard = [];
     for (let i = 0; i < this.props.nRows; i++) {
       let row = [];
